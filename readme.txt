@@ -1,5 +1,5 @@
 === Dual Heading Block ===
-Contributors:      The WordPress Contributors
+Contributors:      hazrathali, devhazrath
 Tags:              block
 Tested up to:      6.7
 Stable tag:        0.1.0

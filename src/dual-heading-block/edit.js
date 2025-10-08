@@ -99,6 +99,9 @@ export default function Edit( { attributes, setAttributes } ) {
 			</InspectorControls>
 			{styleType === 'style1' && (
 				<div {...blockProps}>
+					<div class="one">
+						<h1>Style One</h1>
+					</div>
 					<RichText
 						tagName={subHeadingTag}
 						value={subHeadingText}
