@@ -6,23 +6,21 @@
  */
 
 /* === HEADING STYLE #1 === */
-.one h1 {
-  text-align: center;
-  text-transform: uppercase;
-  padding-bottom: 5px;
+.dual-heading.style1 {
+  position: relative;
 }
-.one h1:before {
+.style-one .main-heading:before {
   width: 28px;
   height: 5px;
   display: block;
   content: "";
   position: absolute;
-  bottom: 3px;
+  bottom: -2px;
   left: 50%;
   margin-left: -14px;
   background-color: #b80000;
 }
-.one h1:after {
+.style-one .main-heading:after {
   width: 100px;
   height: 1px;
   display: block;

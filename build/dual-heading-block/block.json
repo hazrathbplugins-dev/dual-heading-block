@@ -21,7 +21,12 @@
       "background": true,
       "gradients": true,
       "text": false
-    }
+    },
+    "align": [
+      "left",
+      "right",
+      "full"
+    ]
   },
   "attributes": {
     "subHeadingText": {
@@ -55,6 +60,18 @@
     "alignment": {
       "type": "string",
       "default": "center"
+    },
+    "subHeadingColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "headingColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "shapeColor": {
+      "type": "string",
+      "default": "#b80000"
     }
   },
   "textdomain": "dual-heading-block",

@@ -26,6 +26,11 @@ return array(
 				'background' => true,
 				'gradients' => true,
 				'text' => false
+			),
+			'align' => array(
+				'left',
+				'right',
+				'full'
 			)
 		),
 		'attributes' => array(
@@ -60,6 +65,18 @@ return array(
 			'alignment' => array(
 				'type' => 'string',
 				'default' => 'center'
+			),
+			'subHeadingColor' => array(
+				'type' => 'string',
+				'default' => '#000000'
+			),
+			'headingColor' => array(
+				'type' => 'string',
+				'default' => '#000000'
+			),
+			'shapeColor' => array(
+				'type' => 'string',
+				'default' => '#b80000'
 			)
 		),
 		'textdomain' => 'dual-heading-block',

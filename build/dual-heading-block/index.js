@@ -8,7 +8,7 @@
   \*******************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/dual-heading-block","version":"0.1.0","title":"Dual Heading Block","keywords":["dual","heading","block","title","animated"],"category":"widgets","icon":"heading","description":"Create beautiful dual-style headings with full color, alignment, and typography control.","example":{},"supports":{"html":false,"color":{"background":true,"gradients":true,"text":false}},"attributes":{"subHeadingText":{"type":"string","default":"Type Sub Heading here"},"subHeadingTag":{"type":"string","default":"span"},"headingText":{"type":"string","default":"Type Heading here"},"descriptionText":{"type":"string","default":"description"},"headingIcon":{"type":"string","default":"picon"},"headingTag":{"type":"string","default":"h2"},"styleType":{"type":"string","default":"style1"},"alignment":{"type":"string","default":"center"}},"textdomain":"dual-heading-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/dual-heading-block","version":"0.1.0","title":"Dual Heading Block","keywords":["dual","heading","block","title","animated"],"category":"widgets","icon":"heading","description":"Create beautiful dual-style headings with full color, alignment, and typography control.","example":{},"supports":{"html":false,"color":{"background":true,"gradients":true,"text":false},"align":["left","right","full"]},"attributes":{"subHeadingText":{"type":"string","default":"Type Sub Heading here"},"subHeadingTag":{"type":"string","default":"span"},"headingText":{"type":"string","default":"Type Heading here"},"descriptionText":{"type":"string","default":"description"},"headingIcon":{"type":"string","default":"picon"},"headingTag":{"type":"string","default":"h2"},"styleType":{"type":"string","default":"style1"},"alignment":{"type":"string","default":"center"},"subHeadingColor":{"type":"string","default":"#000000"},"headingColor":{"type":"string","default":"#000000"},"shapeColor":{"type":"string","default":"#b80000"}},"textdomain":"dual-heading-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ }),
 
@@ -48,7 +48,10 @@ function Edit({
     subHeadingTag,
     headingTag,
     styleType,
-    alignment
+    shapeColor,
+    alignment,
+    subHeadingColor,
+    headingColor
   } = attributes;
   console.log(attributes);
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
@@ -91,7 +94,28 @@ function Edit({
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Settings', 'dual-heading-block'),
         initialOpen: true,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sub Heading', 'dual-heading-block'),
+          value: subHeadingText,
+          onChange: value => setAttributes({
+            subHeadingText: value
+          }),
+          placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Type your sub heading...', 'dual-heading-block')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Heading', 'dual-heading-block'),
+          value: headingText,
+          onChange: value => setAttributes({
+            headingText: value
+          }),
+          placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Type your main heading...', 'dual-heading-block')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Description (for Style 3)', 'dual-heading-block'),
+          value: descriptionText,
+          onChange: value => setAttributes({
+            descriptionText: value
+          }),
+          placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Only for style 3', 'dual-heading-block')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Alignment', 'dual-heading-block'),
           value: alignment,
           options: [{
@@ -163,40 +187,80 @@ function Edit({
           onChange: value => setAttributes({
             headingTag: value
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('First Heading Color', 'dual-heading-block')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette
-        // value={colorOne}
-        // onChange={(color) => setAttributes({ colorOne: color })}
-        , {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Second Heading Color', 'dual-heading-block')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette
-        // value={colorTwo}
-        // onChange={(color) => setAttributes({ colorTwo: color })}
-        , {})]
+        })]
       })
-    }), styleType === 'style1' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      ...blockProps,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        class: "one",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
-          children: "Style One"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-        tagName: subHeadingTag,
-        value: subHeadingText,
-        onChange: val => setAttributes({
-          subHeadingText: val
-        }),
-        placeholder: "Sub heading..."
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-        tagName: headingTag,
-        value: headingText,
-        onChange: val => setAttributes({
-          headingText: val
-        }),
-        placeholder: "Heading..."
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+      group: "styles",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sub Heading', 'dual-heading-block'),
+        initialOpen: true,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sub Heading Color', 'dual-heading-block')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+          value: subHeadingColor,
+          onChange: color => setAttributes({
+            subHeadingColor: color
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Heading', 'dual-heading-block'),
+        initialOpen: true,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Heading Color', 'dual-heading-block')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+          value: headingColor,
+          onChange: color => setAttributes({
+            headingColor: color
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Advanced', 'dual-heading-block'),
+        initialOpen: true,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Before Shape Color', 'dual-heading-block')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+          value: shapeColor,
+          onChange: color => setAttributes({
+            shapeColor: color
+          })
+        })]
       })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("style", {
+      children: `
+					.style-one .main-heading:before {
+						background-color: ${shapeColor};
+					}
+					.style-one .main-heading:after {
+						background-color: ${shapeColor};
+					}
+				`
+    }), styleType === 'style1' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      ...blockProps,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "style-one",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+          tagName: subHeadingTag,
+          value: subHeadingText,
+          onChange: val => setAttributes({
+            subHeadingText: val
+          }),
+          placeholder: "Sub heading...",
+          style: {
+            color: subHeadingColor
+          }
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+          tagName: headingTag,
+          value: headingText,
+          className: "main-heading",
+          onChange: val => setAttributes({
+            headingText: val
+          }),
+          placeholder: "Heading...",
+          style: {
+            color: headingColor
+          }
+        })]
+      })
     }), styleType === 'style2' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       ...blockProps,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
@@ -354,8 +418,11 @@ function save({
     headingIcon,
     subHeadingTag,
     headingTag,
+    shapeColor,
     styleType,
-    alignment
+    alignment,
+    subHeadingColor,
+    headingColor
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save({
     className: `dual-heading ${styleType}`,
@@ -363,19 +430,45 @@ function save({
       textAlign: alignment || 'center'
     }
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    ...blockProps,
-    children: [styleType === 'style2' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-      children: headingIcon
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
-      tagName: subHeadingTag,
-      value: subHeadingText
-    }), styleType === 'style1' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
-      tagName: headingTag,
-      value: headingText
-    }), styleType === 'style3' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
-      tagName: "p",
-      value: descriptionText
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("style", {
+      children: `
+					.style-one .main-heading:before {
+						background-color: ${shapeColor};
+					}
+					.style-one .main-heading:after {
+						background-color: ${shapeColor};
+					}
+				`
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      ...blockProps,
+      children: [styleType === 'style2' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: headingIcon
+      }), styleType === 'style1' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        ...blockProps,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "style-one",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
+            tagName: subHeadingTag,
+            value: subHeadingText,
+            placeholder: "Sub heading...",
+            style: {
+              color: subHeadingColor
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
+            tagName: headingTag,
+            value: headingText,
+            className: "main-heading",
+            placeholder: "Heading...",
+            style: {
+              color: headingColor
+            }
+          })]
+        })
+      }), styleType === 'style3' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
+        tagName: "p",
+        value: descriptionText
+      })]
     })]
   });
 }

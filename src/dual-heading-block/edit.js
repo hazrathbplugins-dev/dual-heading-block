@@ -1,12 +1,12 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, BlockControls, InspectorControls, RichText } from '@wordpress/block-editor';
-import { ToolbarGroup, ToolbarButton, PanelBody, SelectControl, ColorPalette } from '@wordpress/components';
+import { ToolbarGroup, ToolbarButton, PanelBody, SelectControl, ColorPalette, TextControl, TabPanel } from '@wordpress/components';
 import './editor.scss';
 
-export default function Edit( { attributes, setAttributes } ) {
-	const { subHeadingText, headingText, descriptionText, headingIcon, subHeadingTag, headingTag, styleType, alignment } = attributes;
+export default function Edit({ attributes, setAttributes }) {
+	const { subHeadingText, headingText, descriptionText, headingIcon, subHeadingTag, headingTag, styleType, shapeColor, alignment, subHeadingColor, headingColor } = attributes;
 	console.log(attributes);
-	
+
 	const blockProps = useBlockProps({
 		className: `dual-heading ${styleType}`,
 		style: { textAlign: alignment || 'center' }
@@ -20,7 +20,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						isPressed={styleType === 'style1'}
 						label={__('Style 1', 'dual-heading-block')}
 						icon="editor-textcolor"
-						name = "style1"
+						name="style1"
 						onClick={() => setAttributes({ styleType: 'style1' })}
 					>
 						{__('Style 1', 'dual-heading-block')}
@@ -46,6 +46,27 @@ export default function Edit( { attributes, setAttributes } ) {
 			{/* Inspector Settings */}
 			<InspectorControls>
 				<PanelBody title={__('Settings', 'dual-heading-block')} initialOpen={true}>
+
+					<TextControl
+						label={__('Sub Heading', 'dual-heading-block')}
+						value={subHeadingText}
+						onChange={(value) => setAttributes({ subHeadingText: value })}
+						placeholder={__('Type your sub heading...', 'dual-heading-block')}
+					/>
+
+					<TextControl
+						label={__('Heading', 'dual-heading-block')}
+						value={headingText}
+						onChange={(value) => setAttributes({ headingText: value })}
+						placeholder={__('Type your main heading...', 'dual-heading-block')}
+					/>
+
+					<TextControl
+						label={__('Description (for Style 3)', 'dual-heading-block')}
+						value={descriptionText}
+						onChange={(value) => setAttributes({ descriptionText: value })}
+						placeholder={__('Only for style 3', 'dual-heading-block')}
+					/>
 					<SelectControl
 						label={__('Alignment', 'dual-heading-block')}
 						value={alignment}
@@ -84,36 +105,60 @@ export default function Edit( { attributes, setAttributes } ) {
 						]}
 						onChange={(value) => setAttributes({ headingTag: value })}
 					/>
-					<p>{__('First Heading Color', 'dual-heading-block')}</p>
+				</PanelBody>
+			</InspectorControls>
+			<InspectorControls group="styles">
+				<PanelBody title={__('Sub Heading', 'dual-heading-block')} initialOpen={true}>
+					<p>{__('Sub Heading Color', 'dual-heading-block')}</p>
 					<ColorPalette
-						// value={colorOne}
-						// onChange={(color) => setAttributes({ colorOne: color })}
+						value={subHeadingColor}
+						onChange={(color) => setAttributes({ subHeadingColor: color })}
 					/>
-
-					<p>{__('Second Heading Color', 'dual-heading-block')}</p>
+				</PanelBody>
+				<PanelBody title={__('Heading', 'dual-heading-block')} initialOpen={true}>
+					<p>{__('Heading Color', 'dual-heading-block')}</p>
 					<ColorPalette
-						// value={colorTwo}
-						// onChange={(color) => setAttributes({ colorTwo: color })}
+						value={headingColor}
+						onChange={(color) => setAttributes({ headingColor: color })}
+					/>
+				</PanelBody>
+				<PanelBody title={__('Advanced', 'dual-heading-block')} initialOpen={true}>
+					<p>{__('Before Shape Color', 'dual-heading-block')}</p>
+					<ColorPalette
+						value={shapeColor}
+						onChange={(color) => setAttributes({ shapeColor: color })}
 					/>
 				</PanelBody>
 			</InspectorControls>
+			<style>
+				{`
+					.style-one .main-heading:before {
+						background-color: ${shapeColor};
+					}
+					.style-one .main-heading:after {
+						background-color: ${shapeColor};
+					}
+				`}
+			</style>
 			{styleType === 'style1' && (
 				<div {...blockProps}>
-					<div class="one">
-						<h1>Style One</h1>
+					<div className="style-one">
+						<RichText
+							tagName={subHeadingTag}
+							value={subHeadingText}
+							onChange={(val) => setAttributes({ subHeadingText: val })}
+							placeholder="Sub heading..."
+							style={{ color: subHeadingColor }}
+						/>
+						<RichText
+							tagName={headingTag}
+							value={headingText}
+							className="main-heading"
+							onChange={(val) => setAttributes({ headingText: val })}
+							placeholder="Heading..."
+							style={{ color: headingColor }}
+						/>
 					</div>
-					<RichText
-						tagName={subHeadingTag}
-						value={subHeadingText}
-						onChange={(val) => setAttributes({ subHeadingText: val })}
-						placeholder="Sub heading..."
-					/>
-					<RichText
-						tagName={headingTag}
-						value={headingText}
-						onChange={(val) => setAttributes({ headingText: val })}
-						placeholder="Heading..."
-					/>
 				</div>
 			)}
 			{styleType === 'style2' && (
@@ -145,6 +190,6 @@ export default function Edit( { attributes, setAttributes } ) {
 				</div>
 			)}
 		</>
-		
+
 	);
 }
