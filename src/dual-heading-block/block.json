@@ -17,35 +17,39 @@
 	"example": {},
 	"supports": {
 		"html": false,
-		"color": { 
+		"color": {
 			"background": true,
 			"gradients": true,
-			"text": false 
+			"text": false
 		},
-		"align": ["left", "right", "full"]
+		"align": [
+			"left",
+			"right",
+			"full"
+		]
 	},
-	"attributes" : {
-		"subHeadingText" : {
-			"type" : "string",
-			"default" : "Type Sub Heading here"
+	"attributes": {
+		"subHeadingText": {
+			"type": "string",
+			"default": "Type Sub Heading here"
 		},
-		"subHeadingTag":{
+		"subHeadingTag": {
 			"type": "string",
 			"default": "span"
 		},
-		"headingText" : {
-			"type" : "string",
-			"default" : "Type Heading here"
+		"headingText": {
+			"type": "string",
+			"default": "Type Heading here"
 		},
-		"descriptionText" :{
-			"type":"string",
+		"descriptionText": {
+			"type": "string",
 			"default": "description"
 		},
 		"headingIcon": {
 			"type": "string",
 			"default": "picon"
 		},
-		"headingTag":{
+		"headingTag": {
 			"type": "string",
 			"default": "h2"
 		},
@@ -53,9 +57,9 @@
 			"type": "string",
 			"default": "style1"
 		},
-		"alignment": { 
-			"type": "string", 
-			"default": "center" 
+		"alignment": {
+			"type": "string",
+			"default": "center"
 		},
 		"subHeadingColor": {
 			"type": "string",
@@ -68,6 +72,46 @@
 		"shapeColor": {
 			"type": "string",
 			"default": "#b80000"
+		},
+		"headingFontFamily": {
+			"type": "string",
+			"default": ""
+		},
+		"headingFontSize": {
+			"type": "number",
+			"default": 32
+		},
+		"headingFontWeight": {
+			"type": "string",
+			"default": "700"
+		},
+		"headingTextTransform": {
+			"type": "string",
+			"default": "none"
+		},
+		"headingLineHeight": {
+			"type": "number",
+			"default": 1.2
+		},
+		"subHeadingFontFamily": {
+			"type": "string",
+			"default": ""
+		},
+		"subHeadingFontSize": {
+			"type": "number",
+			"default": 16
+		},
+		"subHeadingFontWeight": {
+			"type": "string",
+			"default": "400"
+		},
+		"subHeadingTextTransform": {
+			"type": "string",
+			"default": "none"
+		},
+		"subHeadingLineHeight": {
+			"type": "number",
+			"default": 1.5
 		}
 	},
 	"textdomain": "dual-heading-block",

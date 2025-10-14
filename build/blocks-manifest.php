@@ -77,6 +77,46 @@ return array(
 			'shapeColor' => array(
 				'type' => 'string',
 				'default' => '#b80000'
+			),
+			'headingFontFamily' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'headingFontSize' => array(
+				'type' => 'number',
+				'default' => 32
+			),
+			'headingFontWeight' => array(
+				'type' => 'string',
+				'default' => '700'
+			),
+			'headingTextTransform' => array(
+				'type' => 'string',
+				'default' => 'none'
+			),
+			'headingLineHeight' => array(
+				'type' => 'number',
+				'default' => 1.2
+			),
+			'subHeadingFontFamily' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'subHeadingFontSize' => array(
+				'type' => 'number',
+				'default' => 16
+			),
+			'subHeadingFontWeight' => array(
+				'type' => 'string',
+				'default' => '400'
+			),
+			'subHeadingTextTransform' => array(
+				'type' => 'string',
+				'default' => 'none'
+			),
+			'subHeadingLineHeight' => array(
+				'type' => 'number',
+				'default' => 1.5
 			)
 		),
 		'textdomain' => 'dual-heading-block',
