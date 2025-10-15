@@ -1,14 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import {
-	Button,
-	Modal,
-	SelectControl,
-	RangeControl,
-	PanelRow,
-	Flex,
-	FlexItem,
-	ButtonGroup,
-	Icon,
+import { Button, Modal, SelectControl, RangeControl, PanelRow, Flex, FlexItem, ButtonGroup, Icon,
 } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';
 import { desktop, tablet, mobile } from '@wordpress/icons';
