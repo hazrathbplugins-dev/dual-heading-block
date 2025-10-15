@@ -26,4 +26,10 @@
   margin: auto 100px;
 }
 
+.responsive-toggle .components-button.has-icon {
+  min-width: unset;
+  width: 24px;
+  height: 24px;
+}
+
 /*# sourceMappingURL=index.css.map*/

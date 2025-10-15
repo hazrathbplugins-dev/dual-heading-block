@@ -10,12 +10,58 @@ import {
 	ButtonGroup,
 	Icon,
 } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import { desktop, tablet, mobile } from '@wordpress/icons';
+import { useSelect, useDispatch } from '@wordpress/data';
 
 export const TypographyControl = ({ attributes, setAttributes, prefix }) => {
 	const [isOpen, setOpen] = useState(false);
 	const [device, setDevice] = useState('desktop');
+	
+	// Get the current preview device from the editor and dispatch to change it
+	const currentPreviewDevice = useSelect(select => {
+		// Check if the interface store is available (it might not be in some contexts)
+		if (select('core/edit-post')) {
+			return select('core/edit-post').__experimentalGetPreviewDeviceType?.() || 'Desktop';
+		}
+		return 'Desktop';
+	}, []);
+	
+	// Get the dispatch function to update the editor's preview device
+	const { __experimentalSetPreviewDeviceType } = useDispatch('core/edit-post');
+	
+	// Function to handle device change
+	const handleDeviceChange = (newDevice) => {
+		// Update our local state
+		setDevice(newDevice);
+		
+		// Map our device names to editor device names
+		const editorDeviceMap = {
+			'desktop': 'Desktop',
+			'tablet': 'Tablet',
+			'mobile': 'Mobile'
+		};
+		
+		// Update the editor's preview device if the function is available
+		if (__experimentalSetPreviewDeviceType) {
+			__experimentalSetPreviewDeviceType(editorDeviceMap[newDevice]);
+		}
+	};
+	
+	// Sync our device state with the editor's preview device
+	useEffect(() => {
+		// Map editor device names to our device names
+		const deviceMap = {
+			'Desktop': 'desktop',
+			'Tablet': 'tablet',
+			'Mobile': 'mobile'
+		};
+		
+		// Update our device state if it's different
+		if (deviceMap[currentPreviewDevice] && deviceMap[currentPreviewDevice] !== device) {
+			setDevice(deviceMap[currentPreviewDevice]);
+		}
+	}, [currentPreviewDevice, device]);
 
 	// Helper to build keys like headingFontSizeDesktop
 	const getKey = (key) => {
@@ -92,19 +138,19 @@ export const TypographyControl = ({ attributes, setAttributes, prefix }) => {
 					<Button
 						icon={<Icon icon={desktop} />}
 						isPressed={device === 'desktop'}
-						onClick={() => setDevice('desktop')}
+						onClick={() => handleDeviceChange('desktop')}
 						label={__('Desktop', 'dual-heading-block')}
 					/>
 					<Button
 						icon={<Icon icon={tablet} />}
 						isPressed={device === 'tablet'}
-						onClick={() => setDevice('tablet')}
+						onClick={() => handleDeviceChange('tablet')}
 						label={__('Tablet', 'dual-heading-block')}
 					/>
 					<Button
 						icon={<Icon icon={mobile} />}
 						isPressed={device === 'mobile'}
-						onClick={() => setDevice('mobile')}
+						onClick={() => handleDeviceChange('mobile')}
 						label={__('Mobile', 'dual-heading-block')}
 					/>
 				</ButtonGroup>
