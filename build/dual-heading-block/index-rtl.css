@@ -6,3 +6,22 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+.components-panel__row {
+  display: block;
+}
+
+.typography-btn-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.typography-btn-control p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #222222;
+  margin: 0;
+}
+
+.components-modal__frame {
+  margin: auto 100px;
+}

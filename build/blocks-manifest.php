@@ -82,9 +82,17 @@ return array(
 				'type' => 'string',
 				'default' => ''
 			),
-			'headingFontSize' => array(
+			'headingFontSizeDesktop' => array(
 				'type' => 'number',
-				'default' => 32
+				'default' => 40
+			),
+			'headingFontSizeTablet' => array(
+				'type' => 'number',
+				'default' => 28
+			),
+			'headingFontSizeMobile' => array(
+				'type' => 'number',
+				'default' => 22
 			),
 			'headingFontWeight' => array(
 				'type' => 'string',
@@ -94,17 +102,33 @@ return array(
 				'type' => 'string',
 				'default' => 'none'
 			),
-			'headingLineHeight' => array(
+			'headingLineHeightDesktop' => array(
+				'type' => 'number',
+				'default' => 1.1
+			),
+			'headingLineHeightTablet' => array(
 				'type' => 'number',
 				'default' => 1.2
+			),
+			'headingLineHeightMobile' => array(
+				'type' => 'number',
+				'default' => 1.3
 			),
 			'subHeadingFontFamily' => array(
 				'type' => 'string',
 				'default' => ''
 			),
-			'subHeadingFontSize' => array(
+			'subHeadingFontSizeDesktop' => array(
 				'type' => 'number',
 				'default' => 16
+			),
+			'subHeadingFontSizeTablet' => array(
+				'type' => 'number',
+				'default' => 14
+			),
+			'subHeadingFontSizeMobile' => array(
+				'type' => 'number',
+				'default' => 12
 			),
 			'subHeadingFontWeight' => array(
 				'type' => 'string',
@@ -117,6 +141,14 @@ return array(
 			'subHeadingLineHeight' => array(
 				'type' => 'number',
 				'default' => 1.5
+			),
+			'subHeadingLineHeightTablet' => array(
+				'type' => 'number',
+				'default' => 1.6
+			),
+			'subHeadingLineHeightMobile' => array(
+				'type' => 'number',
+				'default' => 1.7
 			)
 		),
 		'textdomain' => 'dual-heading-block',
