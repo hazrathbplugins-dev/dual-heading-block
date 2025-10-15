@@ -14,12 +14,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 .typography-btn-control p {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
   color: #222222;
   margin: 0;
+  text-transform: capitalize;
 }
 
 .components-modal__frame {
@@ -30,4 +32,21 @@
   min-width: unset;
   width: 24px;
   height: 24px;
+}
+
+.custom-color-control .components-base-control__field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.custom-color-control .components-base-control__field span {
+  display: none;
+}
+.custom-color-control .components-base-control__field .components-base-control__label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #222222;
+  margin: 0;
+  text-transform: capitalize;
 }
