@@ -1,6 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { Button, Modal, SelectControl, RangeControl, PanelRow, Flex, FlexItem, ButtonGroup, Icon,
-} from '@wordpress/components';
+import { Button, Modal, SelectControl, RangeControl, PanelRow, Flex, FlexItem, ButtonGroup, Icon } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';
 import { desktop, tablet, mobile } from '@wordpress/icons';
 import { useSelect, useDispatch } from '@wordpress/data';
@@ -229,9 +228,7 @@ export const TypographyControl = ({ attributes, setAttributes, prefix }) => {
 								isSecondary
 								onClick={resetTypography}
 								icon="image-rotate"
-							>
-								{__('Reset', 'dual-heading-block')}
-							</Button>
+							/>
 						</FlexItem>
 
 						<FlexItem>

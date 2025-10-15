@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, SelectControl, ColorPalette, TextControl } from '@wordpress/components';
+import { PanelBody, SelectControl, TextControl } from '@wordpress/components';
 function Settings( { attributes, setAttributes } ) {
 	const { subHeadingText, headingText, descriptionText, subHeadingTag, headingTag, alignment } = attributes;
     {/* Inspector Settings */}
@@ -66,17 +66,6 @@ function Settings( { attributes, setAttributes } ) {
                             { label: 'H6', value: 'h6' },
                         ]}
                         onChange={(value) => setAttributes({ headingTag: value })}
-                    />
-                    <p>{__('First Heading Color', 'dual-heading-block')}</p>
-                    <ColorPalette
-                        // value={colorOne}
-                        // onChange={(color) => setAttributes({ colorOne: color })}
-                    />
-
-                    <p>{__('Second Heading Color', 'dual-heading-block')}</p>
-                    <ColorPalette
-                        // value={colorTwo}
-                        // onChange={(color) => setAttributes({ colorTwo: color })}
                     />
                 </PanelBody>
             </InspectorControls>
