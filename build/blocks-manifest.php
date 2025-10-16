@@ -149,6 +149,64 @@ return array(
 			'subHeadingLineHeightMobile' => array(
 				'type' => 'number',
 				'default' => 1.7
+			),
+			'headingPadding' => array(
+				'type' => 'object',
+				'default' => array(
+					'desktop' => array(
+						'top' => '0',
+						'right' => '0',
+						'bottom' => '0',
+						'left' => '0',
+						'unit' => 'px',
+						'isLinked' => true
+					),
+					'tablet' => array(
+						'top' => '0',
+						'right' => '0',
+						'bottom' => '0',
+						'left' => '0',
+						'unit' => 'px',
+						'isLinked' => true
+					),
+					'mobile' => array(
+						'top' => '0',
+						'right' => '0',
+						'bottom' => '0',
+						'left' => '0',
+						'unit' => '0',
+						'isLinked' => true
+					)
+				)
+			),
+			'headingMargin' => array(
+				'type' => 'object',
+				'default' => array(
+					'desktop' => array(
+						'top' => 0,
+						'right' => 0,
+						'bottom' => 0,
+						'left' => 0,
+						'unit' => 'px',
+						'isLinked' => false
+					),
+					'tablet' => array(
+						'top' => 0,
+						'right' => 0,
+						'bottom' => 0,
+						'left' => 0,
+						'unit' => 'px',
+						'isLinked' => false
+					),
+					'mobile' => array(
+						'top' => 0,
+						'right' => 0,
+						'bottom' => 0,
+						'left' => 0,
+						'unit' => 'px',
+						'isLinked' => false
+					)
+				)
 			)
 		),
 		'textdomain' => 'dual-heading-block',

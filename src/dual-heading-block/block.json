@@ -144,6 +144,64 @@
 		"subHeadingLineHeightMobile": {
 			"type": "number",
 			"default": 1.7
+		},
+		"headingPadding": {
+			"type": "object",
+			"default": {
+				"desktop": {
+					"top": "0",
+					"right": "0",
+					"bottom": "0",
+					"left": "0",
+					"unit": "px",
+					"isLinked": true
+				},
+				"tablet": {
+					"top": "0",
+					"right": "0",
+					"bottom": "0",
+					"left": "0",
+					"unit": "px",
+					"isLinked": true
+				},
+				"mobile": {
+					"top": "0",
+					"right": "0",
+					"bottom": "0",
+					"left": "0",
+					"unit": "0",
+					"isLinked": true
+				}
+			}
+		},
+		"headingMargin": {
+			"type": "object",
+			"default": {
+				"desktop": {
+					"top": 0,
+					"right": 0,
+					"bottom": 0,
+					"left": 0,
+					"unit": "px",
+					"isLinked": false
+				},
+				"tablet": {
+					"top": 0,
+					"right": 0,
+					"bottom": 0,
+					"left": 0,
+					"unit": "px",
+					"isLinked": false
+				},
+				"mobile": {
+					"top": 0,
+					"right": 0,
+					"bottom": 0,
+					"left": 0,
+					"unit": "px",
+					"isLinked": false
+				}
+			}
 		}
 	},
 	"textdomain": "dual-heading-block",

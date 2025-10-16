@@ -3,9 +3,10 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody } from '@wordpress/components';
 import { TypographyControl } from './TypographyControl';
 import ColorControl from './ColorControl';
+import DimensionControl from './DimensionControl';
 
 function StyleControls({ attributes, setAttributes }) {
-    const { shapeColor, subHeadingColor, headingColor } = attributes;
+    const { shapeColor, subHeadingColor, headingColor, headingPadding, headingMargin } = attributes;
     return(
         <>
             <InspectorControls group="styles">
@@ -27,6 +28,16 @@ function StyleControls({ attributes, setAttributes }) {
 						onChange={(color) => setAttributes({ headingColor: color })}
 						defaultColor="#222222"
 						className="color-picker-control"
+					/>
+					<DimensionControl
+						label="Padding"
+						value={headingPadding}
+						onChange={(newVal) => setAttributes({ headingPadding: newVal })}
+					/>
+					<DimensionControl
+						label="Margin"
+						value={headingMargin}
+						onChange={(newVal) => setAttributes({ headingMargin: newVal })}
 					/>
 				</PanelBody>
 				<PanelBody title={__('Advanced', 'dual-heading-block')} initialOpen={true}>
